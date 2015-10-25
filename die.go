@@ -1,4 +1,4 @@
-/* 
+/*
 Emulate Perl's "die" function (http://perldoc.perl.org/functions/die.html)
 
 Example:

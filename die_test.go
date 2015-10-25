@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
-	"os"
 	"os/exec"
 	"strings"
 	"testing"
@@ -15,10 +14,6 @@ func TestDie(t *testing.T) {
 	gofile := "/tmp/testprog.go"
 	if err := ioutil.WriteFile(gofile, testprog, 0666); err != nil {
 		t.Fatalf("can't create go file")
-	}
-
-	if err := os.Setenv("GOPATH", "../.."); err != nil {
-		t.Fatalf("can't set GOPATH environment variable")
 	}
 
 	arg := time.Now().UTC().String()
@@ -32,7 +27,7 @@ func TestDie(t *testing.T) {
 
 	expected := fmt.Sprintf("error: %s", arg)
 	lines := strings.Split(stderr.String(), "\n")
-	out := lines[0]  // go run add it's own junk at the end
+	out := lines[0] // go run add it's own junk at the end
 	if out != expected {
 		t.Fatalf("bad data, got:\n%s\nwanted:\n%s", out, expected)
 	}
@@ -44,8 +39,9 @@ var testprog = []byte(`
 package main
 
 import (
-	"die"
 	"flag"
+
+	"github.com/tebeka/die"
 )
 
 var data = ""
