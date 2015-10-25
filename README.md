@@ -6,17 +6,20 @@ Go.
 ## Example:
 
 ```go
+package main
+
 import (
-    . "github.com/tebeka/die"
-    "os"
+	"os"
+
+	. "github.com/tebeka/die"
 )
 
 func main() {
-    filename := "/path/to/file"
-    file, err := os.Open(filename)
-    if err != nil {
-            Die("can't open %s - %s", filename, err)
-    }
+	filename := "/path/to/file"
+	file, err := os.Open(filename)
+	if err != nil {
+		Die("can't open %s - %s", filename, err)
+	}
 }
 ```
 
