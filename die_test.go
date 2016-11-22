@@ -11,7 +11,7 @@ import (
 )
 
 func TestDie(t *testing.T) {
-	gofile := "/tmp/testprog.go"
+	gofile := "/tmp/die-testprog.go"
 	if err := ioutil.WriteFile(gofile, testprog, 0666); err != nil {
 		t.Fatalf("can't create go file")
 	}
@@ -34,14 +34,13 @@ func TestDie(t *testing.T) {
 }
 
 var testprog = []byte(`
-// Test program for die, gets output file and data as arguments and writes
-// data to output file in atexit handler.
+// Test program for die
 package main
 
 import (
 	"flag"
 
-	"github.com/tebeka/die"
+	. "github.com/tebeka/die"
 )
 
 var data = ""
@@ -50,6 +49,6 @@ func main() {
 	flag.Parse()
 	data = flag.Arg(0)
 
-	die.Die("%s", data)
+	Die("%s", data)
 }
 `)

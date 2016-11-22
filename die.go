@@ -1,5 +1,5 @@
-/*
-Emulate Perl's "die" function (http://perldoc.perl.org/functions/die.html)
+/*Package die emulates Perl's "die" function
+  (http://perldoc.perl.org/functions/die.html)
 
 Example:
 
@@ -21,6 +21,11 @@ package die
 import (
 	"fmt"
 	"os"
+)
+
+const (
+	// Version of package
+	Version = "0.1.0"
 )
 
 // Die prints error message and aborts the program
